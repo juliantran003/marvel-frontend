@@ -29,12 +29,31 @@ h2 {
   object-position: left bottom;
 }
 
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+}
+
 .item-container {
   display: flex;
   width: 100vw;
   flex-wrap: wrap;
+
   justify-content: center;
   margin-top: 40px;
+}
+
+.item-container input {
+  margin-top: 40px;
+  width: 100%;
+  color: lightgrey;
+  background-color: black;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  border: lightgrey solid 2px;
 }
 
 .item-container a {
@@ -113,4 +132,48 @@ h2 {
   width: 500px;
   padding: 50px;
   height: 200px;
+}
+
+/* Character */
+
+.character-detail-container {
+  display: flex;
+  margin-top: 50px;
+
+  justify-content: space-around;
+}
+
+.left {
+  margin-top: 20px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 300px;
+}
+
+.left h2 {
+  margin: 15px 0;
+}
+
+.left p {
+  color: grey;
+}
+
+.right {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 464px;
+  text-align: center;
+}
+
+.right p {
+  color: grey;
+}
+
+#arrow {
+  font-size: 80px;
+  margin-top: 80px;
 }
