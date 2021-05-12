@@ -30,7 +30,7 @@ const Characters = () => {
         return (
           <div>
             <img src={results.thumbnail.path} alt="" />
-            <p>{results.name}</p>
+            <h2>{results.name}</h2>
             <p>{results.description}</p>
           </div>
         );

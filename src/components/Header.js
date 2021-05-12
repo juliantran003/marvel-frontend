@@ -1,17 +1,13 @@
 import { Link } from "react-router-dom";
+import logo from "../img/logo.png";
 
 const Header = () => {
   return (
-    <div>
-      <Link to="/">
-        <span>Home</span>
-      </Link>
-      <Link to="/characters">
-        <span>Characters</span>
-      </Link>
-      <Link to="/comics">
-        <span>Comics</span>
-      </Link>
+    <div className="header">
+      <img id="logo" src={logo} alt="" />
+      <Link to="/">HOME</Link>
+      <Link to="/characters">CHARACTERS</Link>
+      <Link to="/comics">COMICS</Link>
     </div>
   );
 };

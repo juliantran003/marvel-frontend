@@ -29,7 +29,7 @@ const Comics = () => {
         return (
           <div>
             <img src={results.thumbnail.path} alt="" />
-            <p>{results.title}</p>
+            <h2>{results.title}</h2>
             <p>{results.description}</p>
           </div>
         );
