@@ -23,18 +23,20 @@ const Character = () => {
   }, []);
   const location = useLocation();
   const id = location.id;
-  const comics = location.comics;
-  console.log(comics);
+  const characterComics = location.comics;
+  console.log(characterComics);
 
   return isLoading ? (
     <span>Loading</span>
   ) : (
     <div>
       <p>{id}</p>
-      <p>{comics}</p>
+      <p>{characterComics}</p>
       {data.results.map((results, index) => {
         return (
-          <div>{comics.indexOf(results._id) === -1 ? "" : results.title}</div>
+          <div>
+            {characterComics.indexOf(results._id) === -1 ? "" : results.title}
+          </div>
         );
       })}
     </div>
