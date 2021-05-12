@@ -37,6 +37,11 @@ h2 {
   margin-top: 40px;
 }
 
+.item-container a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .item-container h1 {
   border: white solid 2px;
 

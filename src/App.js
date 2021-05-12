@@ -4,6 +4,7 @@ import Home from "./containers/Home";
 import Header from "./components/Header";
 import Characters from "./containers/Characters";
 import Comics from "./containers/Comics";
+import Character from "./containers/Character";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route path="/characters">
           <Characters />
+        </Route>
+        <Route path="/character">
+          <Character />
         </Route>
         <Route path="/">
           <Home />
