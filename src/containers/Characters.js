@@ -24,17 +24,27 @@ const Characters = () => {
   return isLoading ? (
     <span>Loading...</span>
   ) : (
-    <div>
-      <h1>Characters</h1>
-      {data.results.map((results, index) => {
-        return (
-          <div>
-            <img src={results.thumbnail.path} alt="" />
-            <h2>{results.name}</h2>
-            <p>{results.description}</p>
-          </div>
-        );
-      })}
+    <div className="item-container">
+      <h1>CHARACTERS</h1>
+      <div className="item-container">
+        {data.results.map((results, index) => {
+          return (
+            <div className="item">
+              <img
+                className="thumbnail"
+                src={`${results.thumbnail.path}.${results.thumbnail.extension}`}
+                alt=""
+              />
+              <h2>{results.name}</h2>
+              <p className="description">
+                {results.description
+                  ? results.description
+                  : "No description found"}
+              </p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
