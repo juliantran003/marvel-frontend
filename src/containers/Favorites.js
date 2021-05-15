@@ -24,7 +24,7 @@ const Favorites = () => {
                       alt=""
                     />
                     <h2>{comics.title}</h2>
-                    <p>{comics.description}</p>
+                    <p className="description">{comics.description}</p>
                   </div>
                 );
               })}
