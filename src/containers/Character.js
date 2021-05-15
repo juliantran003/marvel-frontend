@@ -31,16 +31,13 @@ const Character = () => {
     <span>Loading</span>
   ) : (
     <div className="character-detail-container">
-      <div className="left">
+      <h1>{name}</h1>
+      <div className="character-detail-container-item">
         <img className="thumbnail" src={image_src} alt="" />
-        <h2>{name}</h2>
-        <p>{description}</p>
+        <p className="description"> {description}</p>
       </div>
-      <div id="arrow">
-        <i className="fas fa-arrow-right"></i>
-      </div>
-
-      <div className="right">
+      <h1>COMICS STARRING : {name}</h1>
+      <div className="item-container">
         {data.comics.map((comics, iindex) => {
           return (
             <div className="item">
@@ -50,7 +47,7 @@ const Character = () => {
                 alt=""
               />
               <h2>{comics.title}</h2>
-              <p>{comics.description}</p>
+              <p className="description">{comics.description}</p>
             </div>
           );
         })}

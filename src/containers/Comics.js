@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const Comics = () => {
+const Comics = ({ favoriteComicTab, setFavoriteComicTab }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -41,6 +41,19 @@ const Comics = () => {
     setResults(newResults);
   };
 
+  const clickHandle = (props) => {
+    const find = favoriteComicTab.find((comic) => comic.id === props.id);
+    if (find === undefined) {
+      const newTab = [...favoriteComicTab];
+      newTab.push(props);
+      setFavoriteComicTab(newTab);
+      console.log(favoriteComicTab);
+      alert("Added to favorites");
+    } else {
+      alert("Comic already added to favorites");
+    }
+  };
+
   return isLoading ? (
     <span>Loading...</span>
   ) : results.length === 0 ? (
@@ -63,7 +76,17 @@ const Comics = () => {
                 src={`${results.thumbnail.path}.${results.thumbnail.extension}`}
                 alt=""
               />
-              <button className="add-favorites" type="submit">
+              <button
+                className="add-favorites"
+                onClick={() => {
+                  clickHandle({
+                    id: results._id,
+                    title: results.title,
+                    image_src: `${results.thumbnail.path}.${results.thumbnail.extension}`,
+                    description: results.description,
+                  });
+                }}
+              >
                 Add to favorites
               </button>
               <h2>{results.title}</h2>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Characters = ({ favoriteTab, setFavoriteTab }) => {
+const Characters = ({ favoriteCharacterTab, setFavoriteCharacterTab }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -45,11 +45,18 @@ const Characters = ({ favoriteTab, setFavoriteTab }) => {
   };
 
   const clickHandle = (props) => {
-    const newTab = [...favoriteTab];
-    newTab.push(props);
-    setFavoriteTab(newTab);
-    console.log(favoriteTab);
-    alert("Added to favorites");
+    const find = favoriteCharacterTab.find(
+      (character) => character.id === props.id
+    );
+    if (find === undefined) {
+      const newTab = [...favoriteCharacterTab];
+      newTab.push(props);
+      setFavoriteCharacterTab(newTab);
+      console.log(favoriteCharacterTab);
+      alert("Added to favorites");
+    } else {
+      alert("Character already added to favorites");
+    }
   };
 
   return isLoading ? (

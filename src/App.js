@@ -12,20 +12,24 @@ import Character from "./containers/Character";
 import Favorites from "./containers/Favorites";
 
 function App() {
-  const [favoriteTab, setFavoriteTab] = useState([]);
-
-  Cookies.set("character", JSON.stringify(favoriteTab));
+  const [favoriteCharacterTab, setFavoriteCharacterTab] = useState([]);
+  const [favoriteComicTab, setFavoriteComicTab] = useState([]);
+  Cookies.set("comics", JSON.stringify(favoriteComicTab));
+  Cookies.set("characters", JSON.stringify(favoriteCharacterTab));
   return (
     <Router>
       <Header />
       <Switch>
         <Route path="/comics">
-          <Comics />
+          <Comics
+            favoriteComicTab={favoriteComicTab}
+            setFavoriteComicTab={setFavoriteComicTab}
+          />
         </Route>
         <Route path="/characters">
           <Characters
-            favoriteTab={favoriteTab}
-            setFavoriteTab={setFavoriteTab}
+            favoriteCharacterTab={favoriteCharacterTab}
+            setFavoriteCharacterTab={setFavoriteCharacterTab}
           />
         </Route>
         <Route path="/character">
