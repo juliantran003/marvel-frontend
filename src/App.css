@@ -23,10 +23,33 @@ h2 {
 }
 
 .thumbnail {
-  width: 200px;
-  height: 200px;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
   object-fit: cover;
   object-position: left bottom;
+}
+
+.thumbnail-characters:hover {
+  opacity: 0.7;
+}
+
+.add-favorites {
+  color: white;
+  padding: 2px 0;
+  margin: 10px 0;
+  background-color: orange;
+  border: orange solid 1px;
+  font-weight: bold;
+  border-radius: 5px;
+
+  width: 100%;
+}
+
+.add-favorites:hover {
+  background-color: black;
+  border: orange solid 1px;
 }
 
 .search-container {

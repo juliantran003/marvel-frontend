@@ -59,10 +59,13 @@ const Comics = () => {
           return (
             <div className="item">
               <img
-                className="thumbnail"
+                className="thumbnail "
                 src={`${results.thumbnail.path}.${results.thumbnail.extension}`}
                 alt=""
               />
+              <button className="add-favorites" type="submit">
+                Add to favorites
+              </button>
               <h2>{results.title}</h2>
               <p className="description">
                 {results.description

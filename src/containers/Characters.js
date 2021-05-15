@@ -1,8 +1,9 @@
 import axios from "axios";
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Characters = () => {
+const Characters = ({ favoriteTab, setFavoriteTab }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,13 +15,14 @@ const Characters = () => {
         );
 
         setData(response.data);
+
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchData();
-  }, []);
+  });
 
   const [results, setResults] = useState([]);
 
@@ -42,6 +44,14 @@ const Characters = () => {
     setResults(newResults);
   };
 
+  const clickHandle = (props) => {
+    const newTab = [...favoriteTab];
+    newTab.push(props);
+    setFavoriteTab(newTab);
+    console.log(favoriteTab);
+    alert("Added to favorites");
+  };
+
   return isLoading ? (
     <span>Loading...</span>
   ) : results.length === 0 ? (
@@ -59,29 +69,44 @@ const Characters = () => {
         {data.results.map((results, index) => {
           return (
             // Ci-dessous je passe des données au path /character que je récupère avec useLocation
-            <Link
-              to={{
-                pathname: "/character",
-                id: results._id,
-                name: results.name,
-                image_src: `${results.thumbnail.path}.${results.thumbnail.extension}`,
-                description: results.description,
-              }}
-            >
-              <div className="item">
+
+            <div className="item">
+              <Link
+                to={{
+                  pathname: "/character",
+                  id: results._id,
+                  name: results.name,
+                  image_src: `${results.thumbnail.path}.${results.thumbnail.extension}`,
+                  description: results.description,
+                }}
+              >
                 <img
-                  className="thumbnail"
+                  className="thumbnail thumbnail-characters"
                   src={`${results.thumbnail.path}.${results.thumbnail.extension}`}
                   alt=""
                 />
-                <h2>{results.name}</h2>
-                <p className="description">
-                  {results.description
-                    ? results.description
-                    : "No description found"}
-                </p>
-              </div>
-            </Link>
+              </Link>
+              <button
+                className="add-favorites"
+                onClick={() => {
+                  clickHandle({
+                    id: results._id,
+                    name: results.name,
+                    image_src: `${results.thumbnail.path}.${results.thumbnail.extension}`,
+                    description: results.description,
+                  });
+                }}
+              >
+                Add to favorites
+              </button>
+
+              <h2>{results.name}</h2>
+              <p className="description">
+                {results.description
+                  ? results.description
+                  : "No description found"}
+              </p>
+            </div>
           );
         })}
       </div>
