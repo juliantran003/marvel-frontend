@@ -76,7 +76,7 @@ const Characters = ({ favoriteCharacterTab, setFavoriteCharacterTab }) => {
         {data.results.map((results, index) => {
           return (
             <div className="item">
-              <div>
+              <div className="thumbnail-box">
                 <Link
                   to={{
                     pathname: "/character",
@@ -86,6 +86,9 @@ const Characters = ({ favoriteCharacterTab, setFavoriteCharacterTab }) => {
                     description: results.description,
                   }}
                 >
+                  <p id="click-here">
+                    Click here for more information about this character
+                  </p>
                   <img
                     className="thumbnail thumbnail-characters"
                     src={`${results.thumbnail.path}.${results.thumbnail.extension}`}

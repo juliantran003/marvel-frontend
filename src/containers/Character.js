@@ -38,19 +38,23 @@ const Character = () => {
       </div>
       <h1>COMICS STARRING : {name}</h1>
       <div className="item-container">
-        {data.comics.map((comics, iindex) => {
-          return (
-            <div className="item">
-              <img
-                className="thumbnail"
-                src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
-                alt=""
-              />
-              <h2>{comics.title}</h2>
-              <p className="description">{comics.description}</p>
-            </div>
-          );
-        })}
+        {data.comics.length === 0 ? (
+          <p className="description">No comics found for this character</p>
+        ) : (
+          data.comics.map((comics, iindex) => {
+            return (
+              <div className="item">
+                <img
+                  className="thumbnail"
+                  src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                  alt=""
+                />
+                <h2>{comics.title}</h2>
+                <p className="description">{comics.description}</p>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );
