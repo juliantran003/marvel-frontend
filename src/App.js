@@ -33,7 +33,10 @@ function App() {
           />
         </Route>
         <Route path="/character">
-          <Character />
+          <Character
+            favoriteComicTab={favoriteComicTab}
+            setFavoriteComicTab={setFavoriteComicTab}
+          />
         </Route>
         <Route path="/favorites">
           <Favorites />

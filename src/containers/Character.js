@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const Character = () => {
+const Character = ({ favoriteComicTab, setFavoriteComicTab }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
@@ -27,6 +27,19 @@ const Character = () => {
     fetchData();
   });
 
+  const clickHandle = (props) => {
+    const find = favoriteComicTab.find((comic) => comic.id === props.id);
+    if (find === undefined) {
+      const newTab = [...favoriteComicTab];
+      newTab.push(props);
+      setFavoriteComicTab(newTab);
+      console.log(favoriteComicTab);
+      alert("Added to favorites");
+    } else {
+      alert("Comic already added to favorites");
+    }
+  };
+
   return isLoading ? (
     <span>Loading</span>
   ) : (
@@ -49,6 +62,19 @@ const Character = () => {
                   src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
                   alt=""
                 />
+                <button
+                  className="add-favorites"
+                  onClick={() => {
+                    clickHandle({
+                      id: comics._id,
+                      title: comics.title,
+                      image_src: `${comics.thumbnail.path}.${comics.thumbnail.extension}`,
+                      description: comics.description,
+                    });
+                  }}
+                >
+                  Add to favorites
+                </button>
                 <h2>{comics.title}</h2>
                 <p className="description">{comics.description}</p>
               </div>

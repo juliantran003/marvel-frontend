@@ -40,21 +40,26 @@ const Favorites = () => {
               {characters.map((characters, index) => {
                 return (
                   <div className="item">
-                    <Link
-                      to={{
-                        pathname: "/character",
-                        id: characters.id,
-                        name: characters.name,
-                        image_src: characters.image_src,
-                        description: characters.description,
-                      }}
-                    >
-                      <img
-                        className="thumbnail"
-                        src={`${characters.image_src}`}
-                        alt=""
-                      />
-                    </Link>
+                    <div className="thumbnail-box">
+                      <Link
+                        to={{
+                          pathname: "/character",
+                          id: characters.id,
+                          name: characters.name,
+                          image_src: characters.image_src,
+                          description: characters.description,
+                        }}
+                      >
+                        <p id="click-here">
+                          Click here for more information about this character
+                        </p>
+                        <img
+                          className="thumbnail"
+                          src={`${characters.image_src}`}
+                          alt=""
+                        />
+                      </Link>
+                    </div>
 
                     <h2>{characters.name}</h2>
                     <p className="description">{characters.description}</p>
