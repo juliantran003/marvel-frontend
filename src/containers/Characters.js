@@ -75,24 +75,25 @@ const Characters = ({ favoriteCharacterTab, setFavoriteCharacterTab }) => {
       <div className="item-container">
         {data.results.map((results, index) => {
           return (
-            // Ci-dessous je passe des données au path /character que je récupère avec useLocation
-
             <div className="item">
-              <Link
-                to={{
-                  pathname: "/character",
-                  id: results._id,
-                  name: results.name,
-                  image_src: `${results.thumbnail.path}.${results.thumbnail.extension}`,
-                  description: results.description,
-                }}
-              >
-                <img
-                  className="thumbnail thumbnail-characters"
-                  src={`${results.thumbnail.path}.${results.thumbnail.extension}`}
-                  alt=""
-                />
-              </Link>
+              <div>
+                <Link
+                  to={{
+                    pathname: "/character",
+                    id: results._id,
+                    name: results.name,
+                    image_src: `${results.thumbnail.path}.${results.thumbnail.extension}`,
+                    description: results.description,
+                  }}
+                >
+                  <img
+                    className="thumbnail thumbnail-characters"
+                    src={`${results.thumbnail.path}.${results.thumbnail.extension}`}
+                    alt=""
+                  />
+                </Link>
+              </div>
+
               <button
                 className="add-favorites"
                 onClick={() => {

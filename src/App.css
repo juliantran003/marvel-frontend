@@ -101,6 +101,7 @@ h2 {
 }
 
 .item {
+  position: relative;
   width: 200px;
   height: 300px;
   margin: 15px;
